@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import Header from './Header';
 
 export default function BeerList(){
 
@@ -18,7 +19,7 @@ export default function BeerList(){
 
 return (
         <div>
-
+        <Header/>
 <div>
         <div style={{width: '60%', float:"left"}}>
           { beerListState.map( beer => {

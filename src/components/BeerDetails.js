@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Header from './Header';
 
 
 function BeerDetails(props){
 
-    const [beerState, setBeerState] = useState()
+    const [beerState, setBeerState] = useState([])
     const { beerId } = props.match.params
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/beers/${beerId}`)
+        axios.get(`https://ih-beers-api2.herokuapp.com/beers/${beerId}`)
         .then(res=>{
             const beer = res.data
             setBeerState(beer)
@@ -18,6 +19,7 @@ function BeerDetails(props){
 
     return(
         <div>
+        <Header/>
         <img src= {`${beerState.image_url}`} alt='a beer'/>
         <h1>{beerState.name}</h1>
         <p>{beerState.tagline}</p>
